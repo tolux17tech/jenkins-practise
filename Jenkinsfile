@@ -11,16 +11,16 @@ pipeline {
             }
         }
 
-        stage ("Build" {
+        stage ("Build") {
             steps {
                 script {
                     echo "Application is building"
                 }
             }
-        })
+        }
     }
     post {
-        succes {
+        success {
             echo "APPLICATION IS SUCCESSFUL"
         }
         always {
