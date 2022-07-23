@@ -26,14 +26,7 @@ pipeline {
                 }
             }
             steps {
-                input {
-                    message "Choose Server type"
-                    ok "Done"
-                    type "Stage"
-                    parameters {
-                        choice(name: "Stage", choices:["stage","Prod","Dev"], description: "")
-                    }
-                }
+                
                 script {
                     gv.testApp()
                 }
@@ -41,6 +34,15 @@ pipeline {
         }
 
         stage ("Build") {
+            input {
+                    message "Choose Server type"
+                    ok "Done"
+                    type "Stage"
+                    
+                    parameters {
+                        choice(name: "Stage", choices:["stage","Prod","Dev"], description: "")
+                    }
+                }
             steps {
                 script {
                     gv.buildApp()
