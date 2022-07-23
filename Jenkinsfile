@@ -30,7 +30,7 @@ pipeline {
             }
             steps {
                 script {
-                    buildJar "tolux17tech/demo:1.98"
+                    buildJar()
                 }
             }
         }
@@ -39,7 +39,7 @@ pipeline {
             
             steps {
                 script{
-                    buildImage()
+                    buildImage "tolux17tech/demo:1.98"
                 }
             }
         }
