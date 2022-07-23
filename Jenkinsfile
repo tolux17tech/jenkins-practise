@@ -37,7 +37,7 @@ pipeline {
             input {
                     message "Choose Server type"
                     ok "Done"
-                    type "Stage"
+                    
                     
                     parameters {
                         choice(name: "Stage", choices:["stage","Prod","Dev"], description: "")
