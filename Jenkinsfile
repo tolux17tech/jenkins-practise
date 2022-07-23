@@ -30,7 +30,7 @@ pipeline {
             }
             steps {
                 script {
-                    buildJar "tolux17tech/demo:tagname"
+                    buildJar "tolux17tech/demo:1.98"
                 }
             }
         }
