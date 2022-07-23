@@ -1,9 +1,18 @@
 pipeline {
     agent any
 
+    environment {
+        BRANCH_NAME = "jenkins-jobs"
+    }
+
     stages {
 
         stage ("Test") {
+            when {
+                expression{
+                    BRANCH_NAME == "master"
+                }
+            }
             steps {
                 script {
                     echo "Hello World"
