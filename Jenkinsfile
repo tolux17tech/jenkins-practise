@@ -21,7 +21,7 @@ pipeline {
         stage ('Build Jar'){
             when {
                 expression {
-                    BRANCH_NAME == "jenkins-jobs"
+                    BRANCH_NAME == "complete-jobs"
                 }
             }
             steps {
