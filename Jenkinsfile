@@ -4,6 +4,9 @@ pipeline {
     environment {
         BRANCH_NAME = "jenkins-jobs"
     }
+    parameters {
+        choice(name: "Server", choices["3.74","5.56","6.5"], description: "")
+    }
 
     stages {
 
