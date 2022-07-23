@@ -6,6 +6,7 @@ pipeline {
     }
     parameters {
         choice(name:"Server", choices:["3.74","5.56","6.5"], description: "")
+        string(name:"Author", defaultValue:"Tolulope", description:"")
     }
 
     stages {
@@ -19,6 +20,8 @@ pipeline {
             steps {
                 script {
                     echo "Hello World"
+                    echo "Working Branch is ${BRANCH_NAME}"
+                    echo "Author is ${params.Author}"
                 }
             }
         }
