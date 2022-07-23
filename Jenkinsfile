@@ -11,6 +11,14 @@ pipeline {
 
     stages {
 
+        stage ('init'){
+            steps {
+                script {
+                    gv = load "script.groovy"
+                }
+            }
+        }
+
         stage ("Test") {
             when {
                 expression{
@@ -19,9 +27,7 @@ pipeline {
             }
             steps {
                 script {
-                    echo "Hello World"
-                    echo "Working Branch is ${BRANCH_NAME}"
-                    echo "Author is ${params.Author}"
+                    gv.testApp()
                 }
             }
         }
@@ -29,7 +35,7 @@ pipeline {
         stage ("Build") {
             steps {
                 script {
-                    echo "Application is building"
+                    gv.buildApp()
                 }
             }
         }
