@@ -26,6 +26,14 @@ pipeline {
                 }
             }
             steps {
+                input {
+                    message "Choose Server type"
+                    ok "Done"
+                    type "Stage"
+                    parameter {
+                        choice(name: "Stage", choices:["stage","Prod","Dev"], description: "")
+                    }
+                }
                 script {
                     gv.testApp()
                 }
