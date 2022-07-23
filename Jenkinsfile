@@ -19,6 +19,11 @@ pipeline {
         }
 
         stage ('Build Jar'){
+            when {
+                expression {
+                    BRANCH_NAME == "jenkins-jobs"
+                }
+            }
             steps {
                 script {
                     gv.BuildJar()
