@@ -1,32 +1,42 @@
 pipeline {
     agent any
 
+    tools {
+        maven "maven-3.6"
+    }
+
 
     stages {
 
-        stage ('init'){
+        stage ('Build Jar'){
             steps {
                 script {
-                    gv = load "script.groovy"
+                    echo "Building The Application"
+                    sh "mvn package"
                 }
             }
         }
 
-        stage ("Test") {
+        stage ("Build Image") {
             
             steps {
                 
                 script {
-                    gv.testApp()
+                    echo "Building the Docker image"
+                    withCredentials([usernamePassword(credentialsId: "Dockerhub", usernameVariable: "user", usernamePassword: "pass")]){
+                        sh "docker build -t . tolux17tech/demo:8.5"
+                        sh "echo $pass | docker login -u $user --password-stdin"
+                        sh "docker push tolux17tech/demo:8.5"
+                    }
                 }
             }
         }
 
-        stage ("Build") {
+        stage ("Deploy") {
             
             steps {
                 script {
-                    gv.buildApp()
+                    echo "Deploying The Application"
                 }
             }
         }
