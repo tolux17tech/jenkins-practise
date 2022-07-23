@@ -13,7 +13,7 @@ pipeline {
         stage ("Test") {
             when {
                 expression{
-                    BRANCH_NAME == "master" || ${params.Server} == 3.74
+                    BRANCH_NAME == "master" || $params.Server == 3.74
                 }
             }
             steps {
