@@ -1,62 +1,40 @@
 pipeline {
     agent any
 
-   
-    parameters {
-        choice(name:"Server", choices:["3.74","5.56","6.5"], description: "")
-        string(name:"Author", defaultValue:"Tolulope", description:"")
-    }
+    stages  {
 
-    stages {
-
-        stage ('init'){
+        stage ('init') {
             steps {
                 script {
-                    gv = load "script.groovy"
+                    echo "Building gv script"
                 }
             }
         }
 
-        stage ("Test") {
-            when {
-                expression{
-                    BRANCH_NAME == "master" || params.Server == "3.74"
-                }
-            }
+        stage ('buildjar') {
             steps {
-                
                 script {
-                    gv.testApp()
+                    echo "Building gv script"
                 }
             }
         }
 
-        stage ("Build") {
-            input {
-                    message "Choose Server type"
-                    ok "Done"
-                    
-                    
-                    parameters {
-                        choice(name: "Stage", choices:["stage","Prod","Dev"], description: "")
-                    }
-                }
+        stage ('buildimage') {
             steps {
                 script {
-                    gv.buildApp()
+                    echo "Building gv script"
                 }
             }
         }
-    }
-    post {
-        success {
-            echo "APPLICATION IS SUCCESSFUL"
+
+        stage ('Deployapp') {
+            steps {
+                script {
+                    echo "Building gv script"
+                }
+            }
         }
-        always {
-            echo "TODAY'S WORK WAS DONE"
-        }
-        failure {
-            echo "FIX ERRORS IN CODE"
-        }
+
+        
     }
 }
