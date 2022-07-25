@@ -52,7 +52,12 @@ pipeline {
             }
         }
 
-        post {
+        
+
+        
+    }
+
+    post {
             always {
                 echo "Application ran successfully"
             }
@@ -60,7 +65,4 @@ pipeline {
                 echo "Application ran successfully"
             }
         }
-
-        
-    }
 }
