@@ -44,10 +44,20 @@ pipeline {
         }
 
         stage ('Deployapp') {
+            
             steps {
                 script {
                     echo "Building gv script"
                 }
+            }
+        }
+
+        post {
+            always {
+                echo "Application ran successfully"
+            }
+            success {
+                echo "Application ran successfully"
             }
         }
 
