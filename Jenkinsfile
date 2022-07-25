@@ -23,7 +23,7 @@ pipeline {
         stage ('buildjar') {
             when {
                 expression {
-                    params.type == "Tolulope" || BRANCH_NAME == "jenkins-jobs"
+                    params.type || BRANCH_NAME == "jenkins-jobs"
                 }
             }
             steps {
