@@ -22,7 +22,7 @@ pipeline {
         stage ('buildjar') {
             when {
                 expression {
-                    params.Server == "SAT" || BRANCH_NAME == "sun-day"
+                    params.Server == "SAT" || BRANCH_NAME == "jenkins-jobs"
                 }
             }
             steps {
