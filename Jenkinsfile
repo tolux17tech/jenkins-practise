@@ -12,6 +12,11 @@ pipeline {
         }
 
         stage ('buildjar') {
+            when {
+                expression {
+                    BRANCH_NAME == sql
+                }
+            }
             steps {
                 script {
                     echo "Building gv script"
