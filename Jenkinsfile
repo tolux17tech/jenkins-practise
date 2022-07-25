@@ -41,7 +41,13 @@ pipeline {
         stage ('buildimage') {
             steps {
                 script {
-                    echo "Building gv script"
+                    withCredentials([usernamePassword(credentialsId:"Dockerhub", usernameVarible:"user",passwordVariable:"pass")]) {
+                        sh "docker build . -t tolux17tech/demo:3.47"
+                        sh "echo $pass | docker login -u $user --password-stdin"
+                        sh "docker push tolux17tech/demo:3.47"
+
+                    }
+                    
                 }
             }
         }
