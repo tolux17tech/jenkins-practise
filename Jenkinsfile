@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    parameters {
+        choice(name:"Server",choices:["SAT","IJMB","GMAT"], description:'')
+    }
+
     environment {
         Name = "Tolulope"
     }
