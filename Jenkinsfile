@@ -3,6 +3,7 @@ pipeline {
 
     parameters {
         choice(name:"Server",choices:["SAT","IJMB","GMAT"], description:'')
+        string(name:"type", defaultValue:"Tolulope", description:'')
     }
 
     environment {
