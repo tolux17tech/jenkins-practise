@@ -14,7 +14,7 @@ pipeline {
         stage ('buildjar') {
             when {
                 expression {
-                    BRANCH_NAME == "sql" || BRANCH_NAME = "sun-day"
+                    BRANCH_NAME == "sql" || BRANCH_NAME == "sun-day"
                 }
             }
             steps {
