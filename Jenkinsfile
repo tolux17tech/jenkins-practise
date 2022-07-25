@@ -41,7 +41,7 @@ pipeline {
         stage ('buildimage') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId:"Dockerhub", usernameVarible:"user",passwordVariable:"pass")]) {
+                    withCredentials([usernamePassword(credentialsId:"Dockerhub", usernameVariable:"user",passwordVariable:"pass")]) {
                         sh "docker build . -t tolux17tech/demo:3.47"
                         sh "echo $pass | docker login -u $user --password-stdin"
                         sh "docker push tolux17tech/demo:3.47"
