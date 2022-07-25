@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        maven "maven-3.6"
+    }
+
     parameters {
         choice(name:"Server",choices:["SAT","IJMB","GMAT"], description:'')
         string(name:"type", defaultValue:"Tolulope", description:'')
@@ -21,13 +25,12 @@ pipeline {
         }
 
         stage ('buildjar') {
-            when {
-                expression {
-                    params.type || BRANCH_NAME == "jenkins-jobs"
-                }
+            
             }
             steps {
                 script {
+
+                    sh "mvn package"
                     echo "Building gv script"
                     echo "My name is ${Name}"
                     echo "My name is ${params.type}"
