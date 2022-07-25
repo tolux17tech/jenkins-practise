@@ -23,10 +23,9 @@ pipeline {
                 }
             }
         }
-
-        stage ('buildjar') {
+    
+        stage ('buildjar') 
             
-            }
             steps {
                 script {
 
@@ -36,7 +35,7 @@ pipeline {
                     echo "My name is ${params.type}"
                 }
             }
-        }
+        
 
         stage ('buildimage') {
             steps {
@@ -54,10 +53,7 @@ pipeline {
                 }
             }
         }
-
-        
-
-        
+    
     }
 
     post {
