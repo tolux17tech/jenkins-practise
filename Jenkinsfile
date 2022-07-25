@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        Name = "Tolulope"
+    }
+
     stages  {
 
         stage ('init') {
@@ -20,6 +24,7 @@ pipeline {
             steps {
                 script {
                     echo "Building gv script"
+                    echo "My name is ${Name}"
                 }
             }
         }
