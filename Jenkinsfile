@@ -30,6 +30,7 @@ pipeline {
                 script {
                     echo "Building gv script"
                     echo "My name is ${Name}"
+                    echo "My name is ${params.type}"
                 }
             }
         }
