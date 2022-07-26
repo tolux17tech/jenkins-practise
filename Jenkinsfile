@@ -42,7 +42,7 @@ pipeline {
         stage ('buildimage') {
             steps {
                 script {
-                    buildImage()       
+                    buildImage "tolux17tech/demo:3.49"       
                     
                 }
             }
