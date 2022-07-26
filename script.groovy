@@ -16,6 +16,7 @@ def buildImage() {
 
 def deployApp() {
     echo "Building gv script"
+    
 }
 
 return this

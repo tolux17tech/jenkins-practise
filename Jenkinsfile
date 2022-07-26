@@ -1,4 +1,6 @@
-def gv
+#!/bin/env groovy
+
+@Library('SHARED-LIBRARY')_
 
 pipeline {
     agent any
@@ -18,19 +20,19 @@ pipeline {
 
     stages  {
 
-        stage ('init') {
-            steps {
-                script {
-                    gv = load "script.groovy"
-                }
-            }
-        }
+        // stage ('init') {
+        //     steps {
+        //         script {
+        //             gv = load "script.groovy"
+        //         }
+        //     }
+        // }
     
         stage ('buildjar') {
             steps {
                 script {
 
-                   gv.buildJar()
+                   buildJar()
                 }
             }
         }
@@ -40,7 +42,7 @@ pipeline {
         stage ('buildimage') {
             steps {
                 script {
-                    gv.buildImage()       
+                    buildImage()       
                     
                 }
             }
@@ -50,7 +52,7 @@ pipeline {
             
             steps {
                 script {
-                    gv.deployApp()
+                    deployApp()
                 }
             }
         }
