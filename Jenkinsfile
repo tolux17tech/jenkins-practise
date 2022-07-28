@@ -10,13 +10,13 @@ pipeline {
 
     stages {
 
-        // stage ("init") {
-        //     steps {
-        //         script{
-        //             gv = load "script.groovy"
-        //         }
-        //     }
-        // }
+        stage ("increase") {
+            steps {
+                script{
+                    increase()
+                }
+            }
+        }
 
         stage ('Build Jar'){
             when {
