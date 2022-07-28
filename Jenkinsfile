@@ -23,7 +23,7 @@ pipeline {
     }
 
     environment {
-        Name = "Tolulope Seun"
+        Name = "Tolulope Seun Gbadamosi"
     }
 
     stages  {
