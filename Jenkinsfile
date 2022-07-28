@@ -1,4 +1,4 @@
-def gv
+@Library("SHARED-LIBRARY")_
 
 pipeline {
     agent any
@@ -10,23 +10,23 @@ pipeline {
 
     stages {
 
-        stage ("init") {
-            steps {
-                script{
-                    gv = load "script.groovy"
-                }
-            }
-        }
+        // stage ("init") {
+        //     steps {
+        //         script{
+        //             gv = load "script.groovy"
+        //         }
+        //     }
+        // }
 
         stage ('Build Jar'){
             when {
                 expression {
-                    BRANCH_NAME == "complete-jobs"
+                    BRANCH_NAME == "complete-jobs2"
                 }
             }
             steps {
                 script {
-                    gv.BuildJar()
+                    buildImage()
                 }
             }
         }
@@ -35,7 +35,7 @@ pipeline {
             
             steps {
                 script{
-                    gv.BuildImage()
+                    buildJar()
                 }
             }
         }
@@ -44,7 +44,7 @@ pipeline {
             
             steps {
                 script {
-                    gv.DeployApp()
+                    deployApp()
                 }
             }
         }
