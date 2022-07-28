@@ -8,15 +8,15 @@ pipeline {
     }
 
 
-    // stages {
+    stages {
 
-    //     stage ("init") {
-    //         steps {
-    //             script{
-    //                 gv = load "script.groovy"
-    //             }
-    //         }
-    //     }
+        // stage ("init") {
+        //     steps {
+        //         script{
+        //             gv = load "script.groovy"
+        //         }
+        //     }
+        // }
 
         stage ('Build Jar'){
             when {
