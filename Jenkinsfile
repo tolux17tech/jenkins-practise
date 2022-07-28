@@ -18,6 +18,17 @@ pipeline {
             }
         }
 
+        stage ('incremental'){
+            steps {
+                script {
+                    echo "Incerementing app-version .."
+                    sh "mvn build-helper:parse-version versions:set\
+                    -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion}.\\\${parsedVersion.nextIncrementalVersion}\
+                    versions:commit"
+                }
+            }
+        }
+
         stage ('Build Jar'){
             when {
                 expression {
