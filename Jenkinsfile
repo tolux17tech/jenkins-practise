@@ -36,6 +36,8 @@ pipeline {
             steps {
                 script{
                     buildImage()
+                    dockerLogin()
+                    dockerPush()
                 }
             }
         }
