@@ -1,6 +1,8 @@
 #!/bin/env groovy
 
-@Library('SHARED-LIBRARY')_
+def gv
+
+// @Library('SHARED-LIBRARY')_
 
 pipeline {
     agent any
@@ -20,19 +22,19 @@ pipeline {
 
     stages  {
 
-        // stage ('init') {
-        //     steps {
-        //         script {
-        //             gv = load "script.groovy"
-        //         }
-        //     }
-        // }
+        stage ('init') {
+            steps {
+                script {
+                    gv = load "script.groovy"
+                }
+            }
+        }
     
         stage ('buildjar') {
             steps {
                 script {
 
-                   buildJar()
+                   gv.buildJar()
                 }
             }
         }
@@ -42,7 +44,8 @@ pipeline {
         stage ('buildimage') {
             steps {
                 script {
-                    buildImage "tolux17tech/demo:3.49"       
+                    gv.buildImage() 
+                    // "tolux17tech/demo:3.49"       
                     
                 }
             }
@@ -52,7 +55,7 @@ pipeline {
             
             steps {
                 script {
-                    deployApp()
+                    gv.deployApp()
                 }
             }
         }
