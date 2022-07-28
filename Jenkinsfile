@@ -44,7 +44,7 @@ pipeline {
                 script {
                     buildImage "tolux17tech/demo:3.78"  
                     dockerLogin()
-                    dockerPush() "tolux17tech/demo:3.78"     
+                    dockerPush "tolux17tech/demo:3.78"     
                     
                 }
             }
