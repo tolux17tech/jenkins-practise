@@ -42,7 +42,9 @@ pipeline {
         stage ('buildimage') {
             steps {
                 script {
-                    buildImage "tolux17tech/demo:3.49"       
+                    buildImage "tolux17tech/demo:3.78"  
+                    dockerLogin()
+                    dockerPush() "tolux17tech/demo:3.78"     
                     
                 }
             }
