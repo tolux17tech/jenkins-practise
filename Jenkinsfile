@@ -35,9 +35,9 @@ pipeline {
             
             steps {
                 script{
-                    buildImage () 
+                    buildImage "tolux17tech/demo:tolux"
                     dockerLogin()
-                    dockerPush () 
+                    dockerPush "tolux17tech/demo:tolux"
 
                     // "tolux17tech/demo:tolux"
                     // "tolux17tech/demo:tolux"
