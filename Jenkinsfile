@@ -2,7 +2,7 @@
 
 // @Library('SHARED-LIBRARY')_
 
-library identifier: "SHARED-LIBRARY@master", retriever: ModernSCM (
+library identifier: "SHARED-LIBRARY@master", retriever: ModernScm (
     [$class: "GitSCMSource",
     remote: "https://github.com/tolux17tech/shared-library.git",
     credentialsId: "Gitlab17"]
