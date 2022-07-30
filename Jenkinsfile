@@ -69,7 +69,7 @@ pipeline {
         }
         stage ("Version Update") {
             steps {
-                sshagent(credentials: ["githubsshi"]) {
+                sshagent(credentials: ["githubsshid"]) {
                         sh 'git config --global user.email "tolux17.tech@gmail.com"'
                         sh 'git config --global user.name "Tolux17tech"'
                         sh 'git status'
