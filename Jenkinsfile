@@ -36,7 +36,7 @@ pipeline {
         stage ('Build Jar'){
             when {
                 expression {
-                    BRANCH_NAME == "cversion"
+                    BRANCH_NAME == "cversion2"
                 }
             }
             steps {
