@@ -70,7 +70,7 @@ pipeline {
         stage ("Version Update") {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId:"GitlabtechID", usernameVariable:"USER", passwordVariable:"PASS")]){
+                    withCredentials([usernamePassword(credentialsId:"Githubnp", usernameVariable:"USER", passwordVariable:"PASS")]){
                         sh 'git config --global user.email "tolux17.tech@gmail.com"'
                         sh 'git config --global user.name "Tolulope"'
                         sh 'git status'
