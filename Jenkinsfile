@@ -71,12 +71,12 @@ pipeline {
             steps {
                 sshagent(credentials: ["githubsshid"]) {
                         sh 'git config --global user.email "tolux17.tech@gmail.com"'
-                        sh 'git config --global user.name "Tolux17tech"'
+                        sh 'git config --global user.name "tolux17tech"'
                         sh 'git status'
                         sh 'git branch'
                         sh 'git config --list'
 
-                        // sh "git remote set-url origin https://git@github.com/tolux17tech/jenkins-practise.git"
+                        sh "git remote set-url origin https://tolux17tech.git@github.com/tolux17tech/jenkins-practise.git"
                         sh 'git add .'
                         sh 'git commit -m "ci: version bump"'
                         sh 'git push origin HEAD:cversion2'
