@@ -53,7 +53,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: "Dockerhub", usernameVariable: "user", passwordVariable: "pass")]){
                         sh "docker build . -t  tolux17tech/demo:$IMAGENAME"
                         sh "echo $pass | docker login -u $user --password-stdin"
-                        // sh "docker push tolux17tech/demo:$IMAGENAME"
+                        sh "docker push tolux17tech/demo:$IMAGENAME"
                     }
                 }
             }
@@ -70,18 +70,14 @@ pipeline {
         stage ("Version Update") {
             steps {
                 script {
-                    git branch: 'cversion2', credentialsId: 'githubsshid', url: 'git@github.com:tolux17tech/jenkins-practise.git'{
-   
-                    // withCredentials([usernamePassword(credentialsId:"githubsshid", usernameVariable:"USER", passwordVariable:"PASS")]){
-                        
-                        
+                    withCredentials([usernamePassword(credentialsId:"githubsshid", usernameVariable:"USER", passwordVariable:"PASS")]){
                         sh 'git config --global user.email "tolux17.tech@gmail.com"'
                         sh 'git config --global user.name "Tolulope"'
                         sh 'git status'
                         sh 'git branch'
                         sh 'git config --list'
 
-                        // sh "git remote set-url origin https://${USER}:${PASS}git@github.com:tolux17tech/jenkins-practise.git"
+                        sh "git remote set-url origin https://${USER}:${PASS}git@github.com:tolux17tech/jenkins-practise.git"
                         sh 'git add .'
                         sh 'git commit -m "ci: version bump"'
                         sh 'git push origin HEAD:cversion2'
