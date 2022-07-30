@@ -67,13 +67,24 @@ pipeline {
                 }
             }
         }
-        // stage ("Version Update") {
-        //     steps {
-        //         script {
+        stage ("Version Update") {
+            steps {
+                script {
+                    withCredentials(usernamePassword[(credentialsId: "GitlabtechID", usernameVariable: "USER", passwordVariable:"PASS")]){
+                        sh 'git config --global user.email "tolux17.tech@gmail.com"'
+                        sh 'git config --global user.name "Tolulope"'
+                        sh 'git status'
+                        sh 'git branch'
+                        sh 'git config -list'
 
-        //         }
-        //     }
-        // }
+                        sh "git remote set-url origin https://${USER}:${PASS}@github.com/tolux17tech/jenkins-practise.git"
+                        sh 'git add .'
+                        sh 'git commit -m "ci: version bump"'
+                        sh 'git push origin HEAD:cversion2'
+                    }
+                }
+            }
+        }
     }
     post {
         success {
