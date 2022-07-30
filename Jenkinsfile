@@ -69,21 +69,36 @@ pipeline {
         }
         stage ("Version Update") {
             steps {
-                script {
-                    withCredentials([sshUserPrivateKey(credentialsId:"githubsshid", usernameVariable: "USER", keyFileVariable:"SSH_KEY")]){
+                sshagent(credentials: ["githubsshi"]) {
                         sh 'git config --global user.email "tolux17.tech@gmail.com"'
                         sh 'git config --global user.name "Tolulope"'
                         sh 'git status'
                         sh 'git branch'
                         sh 'git config --list'
 
-                        sh "git remote set-url origin https://${SSH_KEY}git@github.com/tolux17tech/jenkins-practise.git"
+                        sh "git remote set-url origin https://git@github.com/tolux17tech/jenkins-practise.git"
                         sh 'git add .'
                         sh 'git commit -m "ci: version bump"'
                         sh 'git push origin HEAD:cversion2'
-                    }
+
                 }
             }
+            // steps {
+            //     script {
+            //         withCredentials([sshUserPrivateKey(credentialsId:"githubsshid", usernameVariable: "USER", keyFileVariable:"SSH_KEY")]){
+            //             sh 'git config --global user.email "tolux17.tech@gmail.com"'
+            //             sh 'git config --global user.name "Tolulope"'
+            //             sh 'git status'
+            //             sh 'git branch'
+            //             sh 'git config --list'
+
+            //             sh "git remote set-url origin https://${SSH_KEY}git@github.com/tolux17tech/jenkins-practise.git"
+            //             sh 'git add .'
+            //             sh 'git commit -m "ci: version bump"'
+            //             sh 'git push origin HEAD:cversion2'
+            //         }
+            //     }
+            // }
         }
     }
     post {
