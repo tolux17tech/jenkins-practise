@@ -71,7 +71,7 @@ pipeline {
             steps {
                 sshagent(credentials: ["githubsshi"]) {
                         sh 'git config --global user.email "tolux17.tech@gmail.com"'
-                        sh 'git config --global user.name "Tolux17.tech"'
+                        sh 'git config --global user.name "Tolux17tech"'
                         sh 'git status'
                         sh 'git branch'
                         sh 'git config --list'
