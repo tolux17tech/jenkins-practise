@@ -70,14 +70,14 @@ pipeline {
         stage ("Version Update") {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId:"githubsshid", usernameVariable:"USER", passwordVariable:"PASS")]){
+                    withCredentials([usernamePassword(credentialsId:"githubsshid", usernameVariable:"USER")]){
                         sh 'git config --global user.email "tolux17.tech@gmail.com"'
                         sh 'git config --global user.name "Tolulope"'
                         sh 'git status'
                         sh 'git branch'
                         sh 'git config --list'
 
-                        sh "git remote set-url origin https://${USER}:${PASS}git@github.com:tolux17tech/jenkins-practise.git"
+                        sh "git remote set-url origin https://${USER}git@github.com:tolux17tech/jenkins-practise.git"
                         sh 'git add .'
                         sh 'git commit -m "ci: version bump"'
                         sh 'git push origin HEAD:cversion2'
