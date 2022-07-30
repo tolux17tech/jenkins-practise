@@ -70,7 +70,7 @@ pipeline {
         stage ("Version Update") {
             steps {
                 script {
-                    withCredentials([sshUserPrivateKey(credentialsId:"githubsshid", userNameVariable:"USER" keyFileVariable:"SSH_KEY")]){
+                    withCredentials([sshUserPrivateKey(credentialsId:"githubsshid", userNameVariable:"USER", keyFileVariable:"SSH_KEY")]){
                         sh 'git config --global user.email "tolux17.tech@gmail.com"'
                         sh 'git config --global user.name "Tolulope"'
                         sh 'git status'
