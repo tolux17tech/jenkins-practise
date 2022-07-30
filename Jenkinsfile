@@ -75,7 +75,7 @@ pipeline {
                         sh 'git config --global user.name "Tolulope"'
                         sh 'git status'
                         sh 'git branch'
-                        sh 'git config -list'
+                        sh 'git config --list'
 
                         sh "git remote set-url origin https://${USER}:${PASS}@github.com/tolux17tech/jenkins-practise.git"
                         sh 'git add .'
