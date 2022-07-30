@@ -21,7 +21,7 @@ pipeline {
                 script {
                     echo "Incerementing app-version .."
                     sh "mvn build-helper:parse-version versions:set\
-                    -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.nextMinorVersion}.\\\${parsedVersion.nextIncrementalVersion}\
+                    -DnewVersion=\\\${parsedVersion.nextMajorVersion}.\\\${parsedVersion.nextMinorVersion}.\\\${parsedVersion.incrementalVersion}\
                     versions:commit"
 
                     def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
@@ -67,6 +67,13 @@ pipeline {
                 }
             }
         }
+        // stage ("Version Update") {
+        //     steps {
+        //         script {
+
+        //         }
+        //     }
+        // }
     }
     post {
         success {
